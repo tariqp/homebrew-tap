@@ -3,5 +3,5 @@
 Homebrew tap for [NotchControl](https://github.com/tariqp/notchcontrol).
 
 ```sh
-brew install --no-quarantine tariqp/tap/notchcontrol
+brew install tariqp/tap/notchcontrol
 ```

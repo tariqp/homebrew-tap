@@ -11,17 +11,22 @@ cask "notchcontrol" do
 
   app "NotchControl.app"
 
+  # Ad-hoc signed, not notarized: drop the quarantine flag so Gatekeeper lets it open.
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-dr", "com.apple.quarantine", "#{appdir}/NotchControl.app"],
+                   sudo: false
+  end
+
   zap trash: [
     "~/Library/Application Support/NotchControl",
     "~/Library/Preferences/io.github.tariqp.notchcontrol.plist",
   ]
 
   caveats <<~EOS
-    NotchControl is ad-hoc signed, not notarized. If macOS refuses to open it:
-      xattr -dr com.apple.quarantine /Applications/NotchControl.app
-    or install with:
-      brew install --no-quarantine tariqp/tap/notchcontrol
+    NotchControl is ad-hoc signed, not notarized; the quarantine flag is removed on install.
+    If macOS still refuses to open it: xattr -dr com.apple.quarantine /Applications/NotchControl.app
 
-    Then open NotchControl, go to Settings and click "Install hooks" for your agents.
+    Open NotchControl, go to Settings and click "Install hooks" for your agents.
   EOS
 end

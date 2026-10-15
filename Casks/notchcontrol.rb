@@ -1,6 +1,6 @@
 cask "notchcontrol" do
-  version "0.1.0"
-  sha256 "fcd4925a1fc259ae7bc64df42a9157d45c33be6b3c593398e3c06803bf22e480"
+  version "0.1.1"
+  sha256 "3dc63241b6259925c39960101c27a33129419b08db5a7808dc02bb296866a151"
 
   url "https://github.com/tariqp/notchcontrol/releases/download/v#{version}/NotchControl-#{version}.zip"
   name "NotchControl"
